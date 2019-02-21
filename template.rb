@@ -79,6 +79,10 @@ def stop_spring
   run "spring stop"
 end
 
+def copy_rubocop
+  copy_file ".rubocop.yml"
+end
+
 def setup_db
   rails_command "db:create"
   rails_command "db:migrate"
@@ -98,6 +102,7 @@ after_bundle do
   configure_cors
   configure_application
   configure_specs
+  copy_rubocop
 
   setup_db
 
