@@ -4,37 +4,38 @@ def source_paths
 end
 
 def add_gems
-  gem 'sidekiq', '~> 5.2', '>= 5.2.5'
-  gem 'r_creds', '~> 0.2.0'
-  gem 'redis', '~> 4.1'
-  gem 'oj', '~> 3.7', '>= 3.7.9'
-  gem 'blueprinter', '~> 0.12.1'
-  gem 'pagy', '~> 1.3', '>= 1.3.3'
-  gem 'api-pagination', '~> 4.8', '>= 4.8.2'
+  gem 'sidekiq'
+  gem 'r_creds'
+  gem 'redis'
+  gem 'oj'
+  gem 'blueprinter'
+  gem 'pagy'
+  gem 'api-pagination'
   gem 'apitome'
-  gem 'rack-cors', '~> 1.0', '>= 1.0.2'
-  gem 'rspec_api_documentation', '~> 6.1'
-  gem 'devise-jwt', '~> 0.5.8'
+  gem 'rack-cors'
+  gem 'rspec_api_documentation'
+  gem 'devise-jwt'
 
   gem_group :development, :test do
-    gem 'dotenv', '~> 2.6'
+    gem 'dotenv'
   end
 
   gem_group :development do
-    gem 'rubocop', '~> 0.65.0'
-    gem 'rubycritic', '~> 3.5', '>= 3.5.2'
-    gem 'brakeman', '~> 4.4'
-    gem 'bullet', '~> 5.9'
+    gem 'rubocop'
+    gem 'rubycritic'
+    gem 'brakeman'
+    gem 'bullet'
   end
 
   gem_group :test do
-    gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
-    gem 'rspec-sidekiq', '~> 3.0', '>= 3.0.3'
-    gem 'vcr', '~> 4.0'
-    gem 'fakeredis', '~> 0.7.0'
-    gem 'factory_bot_rails', '~> 5.0', '>= 5.0.1'
-    gem 'faker', '~> 1.9', '>= 1.9.3'
-    gem 'database_cleaner', '~> 1.7'
+    gem 'rspec-rails'
+    gem 'rspec-sidekiq'
+    gem 'vcr'
+    gem 'fakeredis'
+    gem 'factory_bot_rails'
+    gem 'faker'
+    gem 'database_cleaner'
+    gem 'webmock'
   end
 end
 

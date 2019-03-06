@@ -20,5 +20,5 @@ Default configs are:
 
 ### Ruby version must be preinstalled and selected must be preinstalled!
 ```bash
-sh setup_rails_api_prototype.sh 5.2.2 my_awesome_app
+sh setup_rails_prototype.sh api 5.2.2 my_awesome_app
 ```
