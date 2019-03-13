@@ -1,6 +1,5 @@
-
 def source_paths
-  [File.expand_path(File.dirname(__FILE__))]
+  [File.expand_path(__dir__)]
 end
 
 def add_gems
@@ -40,7 +39,7 @@ def add_gems
 end
 
 def copy_templates
-  directory "config"
+  directory 'config'
 end
 
 def configure_cors
@@ -53,42 +52,47 @@ def configure_cors
 end
 
 def configure_application
-  insert_into_file "config/application.rb",
-  "require 'sprockets/railtie'\n\n",
-  before: "Bundler.require(*Rails.groups)"
+  insert_into_file(
+    'config/application.rb',
+    "require 'sprockets/railtie'\n\n",
+    before: 'Bundler.require(*Rails.groups)'
+  )
 end
 
 def configure_specs
-  directory "spec", force: true
-  environment "config.generators.test_framework = :rspec"
-  rails_command "generate apitome:install"
+  directory 'spec', force: true
+  environment 'config.generators.test_framework = :rspec'
+  rails_command 'generate apitome:install'
 end
 
 def add_sidekiq
-  environment "config.active_job.queue_adapter = :sidekiq"
+  environment 'config.active_job.queue_adapter = :sidekiq'
 
-  insert_into_file "config/routes.rb",
+  insert_into_file(
+    'config/routes.rb',
     "require 'sidekiq/web'\n\n",
-    before: "Rails.application.routes.draw do"
+    before: 'Rails.application.routes.draw do'
+  )
 
-  insert_into_file "config/routes.rb",
+  insert_into_file(
+    'config/routes.rb',
     "\n mount Sidekiq::Web => '/sidekiq'\n\n",
-    after: "Rails.application.routes.draw do"
+    after: 'Rails.application.routes.draw do'
+  )
 end
 
 def stop_spring
-  run "spring stop"
+  run 'spring stop'
 end
 
 def copy_rubocop
-  copy_file ".rubocop.yml"
+  copy_file '.rubocop.yml'
 end
 
 def setup_db
-  rails_command "db:create"
-  rails_command "db:migrate"
+  rails_command 'db:create'
+  rails_command 'db:migrate'
 end
-
 
 # Main setup
 source_paths
@@ -108,6 +112,6 @@ after_bundle do
   setup_db
 
   git :init
-  git add: "."
-  git commit: %Q{ -m "Initial commit" }
+  git add: '.'
+  git commit: %q{ -m 'Initial commit' }
 end
