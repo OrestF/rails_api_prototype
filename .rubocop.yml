@@ -13,6 +13,7 @@ AllCops:
     - 'bin/**/*'
     - 'temp/**/*'
     - 'db/schema.rb'
+    - 'Gemfile'
     - 'Gemfile.lock'
     - 'node_modules/**/*'
     - 'spec/rails_helper.rb'
