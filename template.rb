@@ -94,6 +94,17 @@ def setup_db
   rails_command 'db:migrate'
 end
 
+def copy_docker
+  directory 'docker'
+  copy_file 'docker-compose.yml'
+  copy_file 'docker-compose.development.yml'
+end
+
+def copy_env
+  copy_file '.env'
+  copy_file '.env.development'
+end
+
 # Main setup
 source_paths
 
@@ -103,6 +114,8 @@ after_bundle do
   stop_spring
 
   copy_templates
+  copy_docker
+  copy_env
   add_sidekiq
   configure_cors
   configure_application
